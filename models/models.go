@@ -4,5 +4,11 @@ package models
 type GameQueue struct {
 	Name  string
 	Age   int
-	score int
+	Score int
+}
+
+//Members of family
+type Members struct {
+	Size   int
+	Member []GameQueue
 }

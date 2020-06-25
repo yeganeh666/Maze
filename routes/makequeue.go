@@ -6,17 +6,21 @@ import (
 	"maze/queueheap"
 )
 
+var Players models.Members
+
 //Get details of family members
 func Get() (*queueheap.MinHeap, int) {
 	var number int
 
 	fmt.Println("Enter Number Of Family Members:")
 	fmt.Scanln(&number)
-
+	Players.Size = number
 	gamequeue := make([]models.GameQueue, number)
 	fmt.Println("Enter ِNames and Ages:")
 	for i := 0; i < number; i++ {
 		fmt.Scan(&gamequeue[i].Name, &gamequeue[i].Age)
+		Players.Member[i].Name = gamequeue[i].Name
+		Players.Member[i].Age = gamequeue[i].Age
 	}
 	minHeap := MakeQueue(gamequeue)
 	return minHeap, len(gamequeue)
