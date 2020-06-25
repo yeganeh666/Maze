@@ -40,32 +40,26 @@ func MakeGraph(matrix [9][9]int) {
 					name := strconv.Itoa(i) + strconv.Itoa(j)
 					name2 := strconv.Itoa(i+1) + strconv.Itoa(j)
 					graph.AddEdge(nodes[name], nodes[name2], 1)
-					// fmt.Println(nodes[name].Name)
-					// fmt.Println(nodes[name2].Name)
-				} else if i-1 >= 0 && matrix[i-1][j] == 1 {
+				}
+				if i-1 >= 0 && matrix[i-1][j] == 1 {
 					name := strconv.Itoa(i) + strconv.Itoa(j)
 					name2 := strconv.Itoa(i-1) + strconv.Itoa(j)
 					graph.AddEdge(nodes[name], nodes[name2], 1)
-					// fmt.Println(nodes[name].Name)
-					// fmt.Println(nodes[name2].Name)
-				} else if j-1 >= 0 && matrix[i][j-1] == 1 {
+				}
+				if j-1 >= 0 && matrix[i][j-1] == 1 {
 					name := strconv.Itoa(i) + strconv.Itoa(j)
 					name2 := strconv.Itoa(i) + strconv.Itoa(j-1)
 					graph.AddEdge(nodes[name], nodes[name2], 1)
-					// fmt.Println(nodes[name].Name)
-					// fmt.Println(nodes[name2].Name)
-				} else if j+1 < 9 && matrix[i][j+1] == 1 {
+				}
+				if j+1 < 9 && matrix[i][j+1] == 1 {
 					name := strconv.Itoa(i) + strconv.Itoa(j)
 					name2 := strconv.Itoa(i) + strconv.Itoa(j+1)
 					graph.AddEdge(nodes[name], nodes[name2], 1)
-					// fmt.Println(nodes[name].Name)
-					// fmt.Println(nodes[name2].Name)
 				}
 			}
 		}
 
 	}
-	//fmt.Println(nodes["08"].Name)
-
 	fmt.Println(graph.Dijkstra(nodes["80"], nodes["08"]))
+	//fmt.Println(graph.String())
 }

@@ -140,9 +140,6 @@ func (g *Graph) NewCostTable(startNode *Node) map[*Node]int {
 	for _, node := range g.Nodes {
 		if node != startNode {
 			costTable[node] = Infinity
-			fmt.Println("*%d", Infinity)
-		} else {
-			fmt.Println("+%d", costTable[node])
 		}
 	}
 
@@ -193,26 +190,3 @@ func getClosestNonVisitedNode(costTable map[*Node]int, visited []*Node) *Node {
 
 	return sorted[0].Node
 }
-
-// func main() {
-// 	a := &Node{Name: "a"}
-// 	b := &Node{Name: "b"}
-// 	c := &Node{Name: "c"}
-// 	d := &Node{Name: "d"}
-// 	e := &Node{Name: "e"}
-// 	f := &Node{Name: "f"}
-// 	g := &Node{Name: "g"}
-
-// 	graph := Graph{}
-// 	graph.AddEdge(a, c, 2)
-// 	graph.AddEdge(a, b, 5)
-// 	graph.AddEdge(c, b, 1)
-// 	graph.AddEdge(c, d, 9)
-// 	graph.AddEdge(b, d, 4)
-// 	graph.AddEdge(d, e, 2)
-// 	graph.AddEdge(d, g, 30)
-// 	graph.AddEdge(d, f, 10)
-// 	graph.AddEdge(f, g, 1)
-
-// 	fmt.Println(graph.Dijkstra(a))
-// }
