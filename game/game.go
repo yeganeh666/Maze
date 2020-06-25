@@ -61,5 +61,5 @@ func MakeGraph(matrix [9][9]int) {
 
 	}
 	fmt.Println(graph.Dijkstra(nodes["80"], nodes["08"]))
-	//fmt.Println(graph.String())
+	fmt.Println(graph.String())
 }
