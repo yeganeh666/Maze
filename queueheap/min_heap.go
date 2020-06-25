@@ -5,64 +5,64 @@ import (
 	"maze/models"
 )
 
-type minheap struct {
-	heapArray []models.GameQueue
-	size      int
-	maxsize   int
+type MinHeap struct {
+	HeapArray []models.GameQueue
+	Size      int
+	MaxSize   int
 }
 
-func NewMinHeap(maxsize int) *minheap {
-	minheap := &minheap{
-		heapArray: []models.GameQueue{},
-		size:      0,
-		maxsize:   maxsize,
+func NewMinHeap(maxsize int) *MinHeap {
+	MinHeap := &MinHeap{
+		HeapArray: []models.GameQueue{},
+		Size:      0,
+		MaxSize:   maxsize,
 	}
-	return minheap
+	return MinHeap
 }
 
-func (m *minheap) leaf(index int) bool {
-	if index >= (m.size/2) && index <= m.size {
+func (m *MinHeap) leaf(index int) bool {
+	if index >= (m.Size/2) && index <= m.Size {
 		return true
 	}
 	return false
 }
 
-func (m *minheap) parent(index int) int {
+func (m *MinHeap) parent(index int) int {
 	return (index - 1) / 2
 }
 
-func (m *minheap) leftchild(index int) int {
+func (m *MinHeap) leftchild(index int) int {
 	return 2*index + 1
 }
 
-func (m *minheap) rightchild(index int) int {
+func (m *MinHeap) rightchild(index int) int {
 	return 2*index + 2
 }
 
-func (m *minheap) Insert(item models.GameQueue) error {
-	if m.size >= m.maxsize {
+func (m *MinHeap) Insert(item models.GameQueue) error {
+	if m.Size >= m.MaxSize {
 		return fmt.Errorf("Heal is ful")
 	}
-	m.heapArray = append(m.heapArray, item)
-	m.size++
-	m.upHeapify(m.size - 1)
+	m.HeapArray = append(m.HeapArray, item)
+	m.Size++
+	m.upHeapify(m.Size - 1)
 	return nil
 }
 
-func (m *minheap) swap(first, second int) {
-	temp := m.heapArray[first]
-	m.heapArray[first] = m.heapArray[second]
-	m.heapArray[second] = temp
+func (m *MinHeap) swap(first, second int) {
+	temp := m.HeapArray[first]
+	m.HeapArray[first] = m.HeapArray[second]
+	m.HeapArray[second] = temp
 }
 
-func (m *minheap) upHeapify(index int) {
-	for m.heapArray[index].Age < m.heapArray[m.parent(index)].Age {
+func (m *MinHeap) upHeapify(index int) {
+	for m.HeapArray[index].Age < m.HeapArray[m.parent(index)].Age {
 		m.swap(index, m.parent(index))
 		index = m.parent(index)
 	}
 }
 
-func (m *minheap) downHeapify(current int) {
+func (m *MinHeap) downHeapify(current int) {
 	if m.leaf(current) {
 		return
 	}
@@ -70,10 +70,10 @@ func (m *minheap) downHeapify(current int) {
 	leftChildIndex := m.leftchild(current)
 	rightRightIndex := m.rightchild(current)
 	//If current is smallest then return
-	if leftChildIndex < m.size && m.heapArray[leftChildIndex].Age < m.heapArray[smallest].Age {
+	if leftChildIndex < m.Size && m.HeapArray[leftChildIndex].Age < m.HeapArray[smallest].Age {
 		smallest = leftChildIndex
 	}
-	if rightRightIndex < m.size && m.heapArray[rightRightIndex].Age < m.heapArray[smallest].Age {
+	if rightRightIndex < m.Size && m.HeapArray[rightRightIndex].Age < m.HeapArray[smallest].Age {
 		smallest = rightRightIndex
 	}
 	if smallest != current {
@@ -82,17 +82,17 @@ func (m *minheap) downHeapify(current int) {
 	}
 	return
 }
-func (m *minheap) BuildMinHeap() {
-	for index := ((m.size / 2) - 1); index >= 0; index-- {
+func (m *MinHeap) BuildMinHeap() {
+	for index := ((m.Size / 2) - 1); index >= 0; index-- {
 		m.downHeapify(index)
 	}
 }
 
-func (m *minheap) Remove() models.GameQueue {
-	top := m.heapArray[0]
-	m.heapArray[0] = m.heapArray[m.size-1]
-	m.heapArray = m.heapArray[:(m.size)-1]
-	m.size--
+func (m *MinHeap) Remove() models.GameQueue {
+	top := m.HeapArray[0]
+	m.HeapArray[0] = m.HeapArray[m.Size-1]
+	m.HeapArray = m.HeapArray[:(m.Size)-1]
+	m.Size--
 	m.downHeapify(0)
 	return top
 }

@@ -1,26 +1,29 @@
 package game
 
 import (
-	"fmt"
 	"sort"
 	"strconv"
 )
 
+//Graph of game
 type Graph struct {
 	Edges []*Edge
 	Nodes []*Node
 }
 
+//Edge of nodes
 type Edge struct {
 	Parent *Node
 	Child  *Node
 	Cost   int
 }
 
+//Node of graph
 type Node struct {
 	Name string
 }
 
+//Infinity for Nodes are unknown
 const Infinity = int(^uint(0) >> 1)
 
 // AddEdge adds an Edge to the Graph
@@ -76,7 +79,7 @@ func (g *Graph) String() string {
 
 // Dijkstra implements THE Dijkstra algorithm
 // Returns the shortest path from startNode to all the other Nodes
-func (g *Graph) Dijkstra(startNode, endNode *Node) (shortestPathTable string) {
+func (g *Graph) Dijkstra(startNode, endNode *Node) (shortestPathTable int) {
 
 	// First, we instantiate a "Cost Table", it will hold the information:
 	// "From startNode, what's is the cost to all the other Nodes?"
@@ -123,7 +126,10 @@ func (g *Graph) Dijkstra(startNode, endNode *Node) (shortestPathTable string) {
 	// Make the costTable nice to read :)
 	for node, cost := range costTable {
 		if node.Name == endNode.Name {
-			shortestPathTable += fmt.Sprintf("Distance from %s to %s = %d\n", startNode.Name, node.Name, cost)
+			//shortestPathTable += fmt.Sprintf("Distance from %s to %s = %d\n", startNode.Name, node.Name, cost)
+			//cost = cost - 2
+			//shortestPathTable += fmt.Sprintf("Distance from Mouse to Cheese = %d\n", cost)
+			shortestPathTable += cost
 		}
 	}
 	// shortestPathTable = fmt.Sprintf("Distance from %s to %s = %d\n", startNode.Name, endNode.Name, endNode[cost])

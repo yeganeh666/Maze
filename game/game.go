@@ -1,7 +1,6 @@
 package game
 
 import (
-	"fmt"
 	"strconv"
 )
 
@@ -22,7 +21,9 @@ func AdjacencyMatrix(path [9]string) [9][9]int {
 	}
 	return matrix
 }
-func MakeGraph(matrix [9][9]int) {
+
+//MakeGraph of our path
+func MakeGraph(matrix [9][9]int) int {
 	graph := Graph{}
 	nodes := make(map[string]*Node)
 	for i := 0; i < 9; i++ {
@@ -60,6 +61,7 @@ func MakeGraph(matrix [9][9]int) {
 		}
 
 	}
-	fmt.Println(graph.Dijkstra(nodes["80"], nodes["08"]))
-	fmt.Println(graph.String())
+	//fmt.Println(graph.Dijkstra(nodes["80"], nodes["08"]))
+	dijkstra := graph.Dijkstra(nodes["80"], nodes["08"])
+	return dijkstra
 }
