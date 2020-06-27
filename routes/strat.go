@@ -75,7 +75,7 @@ func Start(path [9]string, dijkstra int, matrix [9][9]int) int {
 	}
 
 	fmt.Print("\n~~~~ *_* YOU WIN *_* ~~~~\n\n")
-	fmt.Printf("TIME: %d    SCORE%d", end, score)
+	fmt.Printf("TIME: %d    SCORE: %d\n", end, score)
 	return score
 
 }

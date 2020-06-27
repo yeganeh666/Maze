@@ -30,6 +30,7 @@ func ReadFile() ([9]string, int, [9][9]int) {
 		log.Fatalf("readLines: %s", err)
 	}
 	var track [9]string
+	fmt.Println("  *******  ^_^ WELLCOME ^_^  *******  ")
 	for i, line := range lines {
 		fmt.Println(i, line)
 		track[i] = line

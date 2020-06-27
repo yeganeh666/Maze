@@ -8,9 +8,9 @@ import (
 //Menue of game
 func Menue(name string, path [9]string, dijkstra int, matrix [9][9]int) {
 
-	fmt.Printf("1)Start the game as %s\n2)Leaderboard\n3)Solve\n", name)
 	var n int
 	for {
+		fmt.Printf("1)Start the game as %s\n2)Leaderboard\n3)Solve\n4)NextOne\n", name)
 		fmt.Scan(&n)
 		switch n {
 		case 1:
@@ -19,7 +19,11 @@ func Menue(name string, path [9]string, dijkstra int, matrix [9][9]int) {
 		case 2:
 			LeaderBoard()
 			fmt.Print("\n")
+		case 3:
+			Solve(matrix)
+			fmt.Print("\n")
 		case 4:
+			CallClear()
 			return
 		}
 	}

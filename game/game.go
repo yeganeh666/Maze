@@ -1,6 +1,7 @@
 package game
 
 import (
+	"maze/implementDS"
 	"strconv"
 )
 
@@ -24,13 +25,13 @@ func AdjacencyMatrix(path [9]string) [9][9]int {
 
 //MakeGraph of our path
 func MakeGraph(matrix [9][9]int) int {
-	graph := Graph{}
-	nodes := make(map[string]*Node)
+	graph := implementDS.Graph{}
+	nodes := make(map[string]*implementDS.Node)
 	for i := 0; i < 9; i++ {
 		for j := 0; j < 9; j++ {
 			if matrix[i][j] == 1 {
 				name := strconv.Itoa(i) + strconv.Itoa(j)
-				nodes[name] = &Node{Name: name}
+				nodes[name] = &implementDS.Node{Name: name}
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-package quicksort
+package implementDS
 
 //QuickSort ,sort scors
 func QuickSort(arr []int) []int {
@@ -8,12 +8,12 @@ func QuickSort(arr []int) []int {
 		newArr[i] = v
 	}
 
-	sort(newArr, 0, len(arr)-1)
+	Sort(newArr, 0, len(arr)-1)
 
 	return newArr
 }
 
-func sort(arr []int, start, end int) {
+func Sort(arr []int, start, end int) {
 	if (end - start) < 1 {
 		return
 	}
@@ -35,6 +35,6 @@ func sort(arr []int, start, end int) {
 	arr[end] = arr[splitIndex]
 	arr[splitIndex] = pivot
 
-	sort(arr, start, splitIndex-1)
-	sort(arr, splitIndex+1, end)
+	Sort(arr, start, splitIndex-1)
+	Sort(arr, splitIndex+1, end)
 }

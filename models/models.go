@@ -6,3 +6,10 @@ type GameQueue struct {
 	Age   int
 	Score int
 }
+
+//NodeStack uses for find sloution
+type NodeStack struct {
+	X   int
+	Y   int
+	Dir int
+}
