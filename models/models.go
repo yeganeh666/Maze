@@ -6,9 +6,3 @@ type GameQueue struct {
 	Age   int
 	Score int
 }
-
-//Members of family
-type Members struct {
-	Size   int
-	Member []GameQueue
-}

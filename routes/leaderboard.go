@@ -7,13 +7,24 @@ import (
 
 //LeaderBoard show scores
 func LeaderBoard() {
-	var arr []int
-	for i, j := range Players.Member {
-		arr[i] = j.Score
+	arr := make([]int, Number)
+	k := 0
+	for _, j := range Players {
+		arr[k] = j.Score
+		k = k + 1
 	}
 	fmt.Println("*** Leader Board ***")
-	quicksort.QuickSort(arr)
+	arr = quicksort.QuickSort(arr)
 	for i, j := range arr {
-		fmt.Printf("%d ==> %d\n", i, j)
+		name := findePerson(j)
+		fmt.Printf("%d  %s==> %d\n", i, name, j)
 	}
+}
+func findePerson(score int) string {
+	for i, j := range Players {
+		if j.Score == score {
+			return i
+		}
+	}
+	return ""
 }
