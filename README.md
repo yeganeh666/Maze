@@ -48,7 +48,7 @@ Game Menue:
   
 3-Solve
 
-      Shows One Solution Of Game
+      Shows A Solution Of Game
       
       
 4-Next One
